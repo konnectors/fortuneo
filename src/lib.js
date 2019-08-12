@@ -70,7 +70,8 @@ async function start(fields) {
     log('info', 'Retrieve the balance', 'bank.balances')
     // Update the balance of each bank account
     // Note: the parameter is a pointer
-    await parseBalances(bankAccount)
+    const balance = await parseBalances(bankAccount)
+    if (balance) bankAccount.balance = balance
 
     log('info', 'Download CSV', 'bank.operations')
     let csv = await downloadCSVWithBankInformation(lastYear, today, bankAccount)
@@ -355,9 +356,7 @@ function parseOperations(account, operationLines) {
 async function parseBalances(bankAccount) {
   let $ = await request(`${baseUrl}${bankAccount.linkBalance}`)
   let rules = bankAccount.accountType.scrape4Balance
-  if (rules) {
-    bankAccount.balance = scrape($(rules.sel), { value: rules.opts }).value
-  }
+  return rules ? scrape($(rules.sel), { value: rules.opts }).value : undefined
 }
 
 /**
