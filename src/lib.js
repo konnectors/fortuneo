@@ -15,7 +15,7 @@ const AdmZip = require('adm-zip')
 
 const helpers = require('./helpers')
 
-const doctypes = require('cozy-doctypes')
+const doctypes = require('cozy-doctypes/dist')
 const {
   BankAccount,
   BankTransaction,
