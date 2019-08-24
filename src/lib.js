@@ -17,6 +17,7 @@ const helpers = require('./helpers')
 
 const doctypes = require('cozy-doctypes/dist')
 const {
+  Document,
   BankAccount,
   BankTransaction,
   BalanceHistory,
@@ -32,8 +33,7 @@ let urlAskDownload =
   '/fr/prive/mes-comptes/compte-courant/consulter-situation/telecharger-historique/telechargement-especes.jsp'
 let urlDownload = baseUrl + '/documents/HistoriqueOperations_'
 
-BankAccount.registerClient(cozyClient)
-BalanceHistory.registerClient(cozyClient)
+Document.registerClient(cozyClient)
 
 const reconciliator = new BankingReconciliator({ BankAccount, BankTransaction })
 const request = requestFactory({
