@@ -1,0 +1,42 @@
+language: node_js
+node_js:
+- '8'
+env:
+  global:
+  - MATTERMOST_CHANNEL=publication
+  - DEPLOY_REPOSITORY="git@github.com:konnectors/fortuneo.git"
+  # REGISTRY_TOKEN(editor=cozy, app=fortuneo)
+  - secure: Q7vcTxk1CzCH/RqF9nTnTTcyUkGXLJqYi/vstUupQu6eRWaZf5JSdhU/U5XmFF+4G1LVYYqfGfrPsDyal2IGWuCwmy5psDyNi7Ov6x6QTgW5iPH5UUxey1jMby/Ke8Ab7CbJfwbgdajaVmntvtbuDwl88FSykPxhe3OWh/US3cgkd/G5lJk8stTKdoyTKlZskxYznXlvqhpzWJCQ6+BAfwtK79O01ZbnUwGUbLRgyzttJ6qI2cNqrxcEeY1TGgv3yK11xLZfYYuKa2F11s/wgjQSwEgP1CNU/hp/u73ySBa+gprqDcWL1NQ4zQowPlCJT2zmZ1WU5vAUPG83TiqcvU7qb0+oVICTJ9XFkiSJBiNf5MJy/xhxNPDFiyNXZ1IyZQOO7h0Xp+da3UBbOhncu2C3HKGAcr42xxj3kNrZfKaFunTJyynLaUMiBrRvhlkbgVaxkas6vgHrXGV+BSw0rMKuwIQrjV2cbdLtn9NAt0sipbQAyzGJSgATiFl/eddwBJWDM5RX4x3RdA26r9G456baA6DVWBvvN6EUulsgKERHe9utyoLWHk3Unu2/+blwEsLR6MbpSae3yq0lQlxYSGIafDOhuj2Rllor8icp1CnXKvXuM5UrZeoOC/lt1L+iUkoqCJvrx5uHL3sJ65w7cLxDwse/0q7oVrUPRS4wSDs=
+  # MATTERMOST_HOOK_URL
+  - secure: FY2uoT+XFjcKbOoC4Kon7q6SUz+PXQDHGNFouJriBmG72QVOgJyPMF6uLKvpXLMkUXrAGU5bq+6REhz3gymrw3EGpkIy5jOgHaHiyc0gaXtGjQzW1Tmu3VEH3o+YTAZW3/JlGZsfptqY/hiearjOJYEPrJZRFmbMGP57p0U4IOne8ZbXOzXSqmBeethUh0QDMX6HXaBArW028GZ4iz4G3lJsLZc2z0X4/wRvuzP3/3Wpgido3ycXWXYC/svWEQmPioETBxMqW//sulPtrtZfMoCAWhm9Ic7Ehoq/ZT6A3BfI24we1ddoqHwm1hWVbUoZuYFvTWzCuypfCNor39sDCCn2nnUdq07QY6+S9cFZx4Ng+th1XKAUjpmtzsqDm1Na7dkqcbG1k6821CuEMTt0vWzaihiqTgSIdOcCD3gFwvNZCYphW3vv/9nwdJgXir/CtguJO7ahsQJLTq+3Y2WeNOSUEjBkfZVku6J2vvQJFM6LL/nehB6wTZjX2hfsdyX1OowI8Zt42p1BVpuOVeQtmmu1jze+PCVExZj+cbVJPTOlUOdmhqUWOtJ50uj/3cRqmKC416Of1RBxy7ymzm6Qo7IUSruUxkF3KZRH6whdxRVnV+7/SCHoIXdgW5tyEbvySfOwsMy/a3BKizynGAs07FV/A2It+LtNtHq1FP5h5ZI=
+cache:
+  yarn: true
+  directories:
+  - node_modules
+branches:
+  except:
+  - build
+  - build-debug
+script:
+- yarn lint
+- yarn build
+deploy:
+- provider: script
+  skip-cleanup: true
+  script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish --space selfhosted
+  on:
+    branch: master
+- provider: script
+  skip-cleanup: true
+  script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish --space selfhosted --postpublish mattermost
+  on:
+    tags: true
+before_install:
+- openssl aes-256-cbc -K $encrypted_966557192e1a_key -iv $encrypted_966557192e1a_iv
+  -in github_deploy_key.enc -out /tmp/github_deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/github_deploy_key
+- ssh-add /tmp/github_deploy_key
+after_deploy:
+- rm /tmp/github_deploy_key
+- ssh-add -D
