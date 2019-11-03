@@ -87,8 +87,9 @@ async function start(fields) {
   log('info', 'Categorize the list of transactions')
   const categorizedTransactions = await categorize(allOperations)
 
+  // Save the accounts, omitting unnecessary data
   const { accounts: savedAccounts } = await reconciliator.save(
-    bankAccounts.map(x => omit(x, ['currency', 'typeAccount', 'linkBalance'])),
+    bankAccounts.map(x => omit(x, ['currency', 'accountType', 'linkBalance'])),
     categorizedTransactions
   )
 
