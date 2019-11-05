@@ -84,14 +84,15 @@ function parseDate(date) {
 }
 
 /**
- * Convert an amount to float
+ * Convert an amount to float, by keeping in the input string only
+ * digits, separators, and +/- indicators.
  * @param {string} amount
  * @returns {Number}
  */
 function normalizeAmount(amount) {
   return parseFloat(
     amount
-      .replaceAll(/\s/, '')
+      .replaceAll(/[^\d,.\-+]/, '')
       .replace(',', '.')
       .trim()
   )

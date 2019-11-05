@@ -60,9 +60,11 @@ async function start(fields) {
 
   log('info', 'Retrieve all informations for each bank accounts found')
 
+  // Build the date range of the retrieved operations.
+  // Note: for some reasons, Fortuneo only allows to retrieve 2 years of operations.
   const today = moment().format('DD/MM/YYYY')
-  const lastYear = moment()
-    .subtract(1, 'years')
+  const lastTwoYears = moment()
+    .subtract(2, 'years')
     .format('DD/MM/YYYY')
 
   let allOperations = []
@@ -74,15 +76,20 @@ async function start(fields) {
     if (balance) bankAccount.balance = balance
 
     log('info', 'Download CSV', 'bank.operations')
-    let csv = await downloadCSVWithBankInformation(lastYear, today, bankAccount)
+    let csv = await downloadCSVWithBankInformation(
+      lastTwoYears,
+      today,
+      bankAccount
+    )
     allOperations = allOperations.concat(lib.parseOperations(bankAccount, csv))
   }
 
   log('info', 'Categorize the list of transactions')
   const categorizedTransactions = await categorize(allOperations)
 
+  // Save the accounts, omitting unnecessary data
   const { accounts: savedAccounts } = await reconciliator.save(
-    bankAccounts.map(x => omit(x, ['currency', 'typeAccount', 'linkBalance'])),
+    bankAccounts.map(x => omit(x, ['currency', 'accountType', 'linkBalance'])),
     categorizedTransactions
   )
 
