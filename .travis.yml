@@ -3,7 +3,6 @@ node_js:
 - '12'
 env:
   global:
-  - DEPLOY_REPOSITORY="git@github.com:konnectors/fortuneo.git"
   # REGISTRY_TOKEN(editor=cozy, app=fortuneo)
   - secure: Q7vcTxk1CzCH/RqF9nTnTTcyUkGXLJqYi/vstUupQu6eRWaZf5JSdhU/U5XmFF+4G1LVYYqfGfrPsDyal2IGWuCwmy5psDyNi7Ov6x6QTgW5iPH5UUxey1jMby/Ke8Ab7CbJfwbgdajaVmntvtbuDwl88FSykPxhe3OWh/US3cgkd/G5lJk8stTKdoyTKlZskxYznXlvqhpzWJCQ6+BAfwtK79O01ZbnUwGUbLRgyzttJ6qI2cNqrxcEeY1TGgv3yK11xLZfYYuKa2F11s/wgjQSwEgP1CNU/hp/u73ySBa+gprqDcWL1NQ4zQowPlCJT2zmZ1WU5vAUPG83TiqcvU7qb0+oVICTJ9XFkiSJBiNf5MJy/xhxNPDFiyNXZ1IyZQOO7h0Xp+da3UBbOhncu2C3HKGAcr42xxj3kNrZfKaFunTJyynLaUMiBrRvhlkbgVaxkas6vgHrXGV+BSw0rMKuwIQrjV2cbdLtn9NAt0sipbQAyzGJSgATiFl/eddwBJWDM5RX4x3RdA26r9G456baA6DVWBvvN6EUulsgKERHe9utyoLWHk3Unu2/+blwEsLR6MbpSae3yq0lQlxYSGIafDOhuj2Rllor8icp1CnXKvXuM5UrZeoOC/lt1L+iUkoqCJvrx5uHL3sJ65w7cLxDwse/0q7oVrUPRS4wSDs=
   # MATTERMOST_HOOK_URL
