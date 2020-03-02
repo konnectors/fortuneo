@@ -1,6 +1,6 @@
 {
   "name": "Fortuneo",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "travisDeployKey": "./bin/generate_travis_deploy_key"
   },
   "dependencies": {
-    "adm-zip": "0.4.13",
+    "adm-zip": "0.4.14",
     "cozy-konnector-libs": "4.33.0",
     "moment": "2.24.0"
   },
