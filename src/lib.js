@@ -5,7 +5,8 @@ const {
   scrape,
   signin,
   categorize,
-  cozyClient
+  cozyClient,
+  errors
 } = require('cozy-konnector-libs')
 
 const groupBy = require('lodash/groupBy')
@@ -117,8 +118,13 @@ function authenticate(login, passwd) {
     formSelector: 'form[name="acces_identification"]',
     formData: { login, passwd },
     encoding: 'latin1',
-    validate: (statusCode, $) => {
-      // Check if there is at least one logout link
+    validate: (statusCode, $, fullResponse) => {
+      // First check if 2FA code is requested
+      if (fullResponse.body.includes('Sécurité renforcée tous les 90 jours')) {
+        throw new Error(errors.USER_ACTION_NEEDED)
+      }
+
+      // Then check if there is at least one logout link
       return $('a[href="/logoff"]').length > 0
     }
   })
