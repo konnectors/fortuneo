@@ -1,6 +1,6 @@
 {
   "name": "Fortuneo",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   "dependencies": {
     "adm-zip": "0.4.14",
     "cozy-konnector-libs": "4.34.4",
-    "moment": "2.26.0"
+    "moment": "2.27.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "6.0.1",
