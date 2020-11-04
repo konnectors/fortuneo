@@ -45,7 +45,7 @@
     "adm-zip": "0.4.16",
     "cozy-doctypes": "1.74.5",
     "cozy-konnector-libs": "4.35.0",
-    "moment": "2.27.0"
+    "moment": "2.29.1"
   },
   "devDependencies": {
     "copy-webpack-plugin": "6.2.1",
