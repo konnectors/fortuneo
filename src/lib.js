@@ -138,7 +138,7 @@ function authenticate(login, passwd) {
  */
 async function downloadCSVWithBankInformation(dateBegin, dateEnd, bankAccount) {
   const rq = requestFactory({
-    //debug: 'full',
+    // debug: 'full',
     cheerio: false,
     gzip: false,
     jar: true
