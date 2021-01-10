@@ -138,7 +138,7 @@ function authenticate(login, passwd) {
  */
 async function downloadCSVWithBankInformation(dateBegin, dateEnd, bankAccount) {
   const rq = requestFactory({
-    //debug: 'full',
+    // debug: 'full',
     cheerio: false,
     gzip: false,
     jar: true
@@ -368,6 +368,12 @@ function parseOperations(account, operationLines) {
  */
 async function parseBalances(bankAccount) {
   let $ = await request(`${baseUrl}${bankAccount.linkBalance}`)
+  // Access to the account might be blocked by a pop-up requesting
+  // to update the client's "investor profile", which is mandatory
+  // for clients investing in stocks or life-insurance.
+  if ($.html().includes('ProfilInvestisseurForm')) {
+    throw new Error(errors.USER_ACTION_NEEDED)
+  }
   let rules = bankAccount.accountType.scrape4Balance
   return rules ? scrape($(rules.sel), { value: rules.opts }).value : undefined
 }
