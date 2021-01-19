@@ -1,6 +1,6 @@
 {
   "name": "Fortuneo",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
     "moment": "2.29.1"
   },
   "devDependencies": {
-    "cozy-jobs-cli": "1.15.5",
+    "cozy-jobs-cli": "1.15.7",
     "cozy-konnector-build": "1.1.5",
     "jsdoc": "3.6.6"
   }
