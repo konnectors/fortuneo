@@ -38,6 +38,7 @@ Document.registerClient(cozyClient)
 
 const reconciliator = new BankingReconciliator({ BankAccount, BankTransaction })
 const request = requestFactory({
+  // debug: true,
   cheerio: true,
   json: false,
   jar: true
@@ -370,8 +371,12 @@ async function parseBalances(bankAccount) {
   let $ = await request(`${baseUrl}${bankAccount.linkBalance}`)
   // Access to the account might be blocked by a pop-up requesting
   // to update the client's "investor profile", which is mandatory
-  // for clients investing in stocks or life-insurance.
-  if ($.html().includes('ProfilInvestisseurForm')) {
+  // for clients investing in stocks or life-insurance, or
+  // a blocking message which the user has to acknowledge.
+  if (
+    $.html().includes('ProfilInvestisseurForm') ||
+    $.html().includes('validation_messages_bloquants')
+  ) {
     throw new Error(errors.USER_ACTION_NEEDED)
   }
   let rules = bankAccount.accountType.scrape4Balance
