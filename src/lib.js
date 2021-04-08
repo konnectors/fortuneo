@@ -38,6 +38,7 @@ Document.registerClient(cozyClient)
 
 const reconciliator = new BankingReconciliator({ BankAccount, BankTransaction })
 const request = requestFactory({
+  // debug: true,
   cheerio: true,
   json: false,
   jar: true
