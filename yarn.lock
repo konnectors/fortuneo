@@ -511,10 +511,10 @@ acorn@^8.2.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.3.0.tgz#1193f9b96c4e8232f00b11a9edff81b2c8b98b88"
   integrity sha512-tqPKHZ5CaBJw0Xmy0ZZvLs1qTV+BNFSyvn77ASXkpBNfIRk8ev26fKrD9iLGwGA9zedPao52GSHzq8lyZG0NUw==
 
-adm-zip@0.5.5:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.5.5.tgz#b6549dbea741e4050309f1bb4d47c47397ce2c4f"
-  integrity sha512-IWwXKnCbirdbyXSfUDvCCrmYrOHANRZcc8NcRrvTlIApdl7PwE9oGcsYvNeJPAVY1M+70b4PxXGKIf8AEuiQ6w==
+adm-zip@0.5.7:
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.5.7.tgz#86d73d2c9b7766024e47f736b31af71e253b6d8d"
+  integrity sha512-QLEo3eoC2B0i3+g/G5nNzKbGoVOjW2ingZ4TXl7/YeDM+FAl3SiHSNnokTZLFEuVHBn5CbZ42KJcIIsRji1EgQ==
 
 ajv-keywords@^3.5.2:
   version "3.5.2"
