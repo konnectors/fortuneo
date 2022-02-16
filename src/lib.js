@@ -65,9 +65,7 @@ async function start(fields) {
   // Build the date range of the retrieved operations.
   // Note: for some reasons, Fortuneo only allows to retrieve 2 years of operations.
   const today = moment().format('DD/MM/YYYY')
-  const lastTwoYears = moment()
-    .subtract(2, 'years')
-    .format('DD/MM/YYYY')
+  const lastTwoYears = moment().subtract(2, 'years').format('DD/MM/YYYY')
 
   let allOperations = []
   for (let bankAccount of bankAccounts) {
@@ -453,7 +451,7 @@ function saveBalances(balances) {
 
 // ===== Export ======
 
-String.prototype.replaceAll = function(search, replacement) {
+String.prototype.replaceAll = function (search, replacement) {
   var target = this
   return target.replace(new RegExp(search, 'g'), replacement)
 }
