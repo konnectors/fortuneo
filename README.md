@@ -1,6 +1,7 @@
 [Cozy][cozy] Konnector Fortuneo Bank
 =======================================
 
+
 What's Cozy?
 ------------
 
@@ -60,6 +61,10 @@ You can reach the Cozy Community by:
 - Posting issues on the [Github repos][github]
 - Say Hi! on [Twitter]
 
+Known issues
+------------
+
+- This Konnector is not compatible with the double authentication (2FA) at each connection. Managing this option would not be user-friendly. 
 
 License
 -------
