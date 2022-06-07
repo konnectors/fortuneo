@@ -44,7 +44,7 @@
   "dependencies": {
     "adm-zip": "0.5.9",
     "cozy-doctypes": "1.83.8",
-    "cozy-konnector-libs": "4.53.0",
+    "cozy-konnector-libs": "4.53.1",
     "moment": "2.29.3"
   },
   "devDependencies": {
