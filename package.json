@@ -43,11 +43,11 @@
   "dependencies": {
     "adm-zip": "0.5.9",
     "cozy-doctypes": "1.88.7",
-    "cozy-konnector-libs": "5.3.1",
+    "cozy-konnector-libs": "5.4.0",
     "moment": "2.29.4"
   },
   "devDependencies": {
-    "cozy-jobs-cli": "2.2.1",
+    "cozy-jobs-cli": "2.2.2",
     "cozy-konnector-build": "1.5.1",
     "jsdoc": "4.0.2"
   }
